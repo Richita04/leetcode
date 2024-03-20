@@ -1,15 +1,17 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
 
-        int n= nums.length;
-        HashMap<Integer,Integer> mpp= new HashMap<>();
-
-        for(int i=0; i<n; i++){
-            if(mpp.containsKey(nums[i])){
+        Arrays.sort(nums);
+        
+        // Iterate through the array
+        for(int i = 1; i < nums.length; i++) {
+            // If adjacent elements are equal, then we found a duplicate
+            if(nums[i-1] == nums[i]) {
                 return true;
             }
-            mpp.put(nums[i],i);
         }
+        
+        // No duplicates found
         return false;
         
     }
